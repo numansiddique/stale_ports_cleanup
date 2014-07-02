@@ -27,6 +27,13 @@ class RouterPortCleanup():
                     return
 
     def clean_up_ports(self):
+        """ Delete the stale ports.
+        These ports have
+        1. Empty device_id
+        2. Empty device_owner
+        3. The IP address of the port will be the gateway ip of the subnet 
+        """
+        
         # get the subnets
         self.subnets = self.client.list_subnets()['subnets']
         print "subnets = \n"
